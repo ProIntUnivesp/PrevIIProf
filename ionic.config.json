@@ -1,0 +1,7 @@
+{
+  "name": "calcprev",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
