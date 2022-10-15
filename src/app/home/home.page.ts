@@ -4,6 +4,7 @@ import { AlertController, LoadingController, NavController } from '@ionic/angula
 import { AuthenticationService } from '../services/authentication.service';
 import { AvatarService } from '../services/avatar.service';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -21,17 +22,24 @@ export class HomePage {
     private router: Router,
     private loadingController: LoadingController,
     private alertController: AlertController,
+    private storage: Storage,
   ) {
-    this.avatarService.getUserProfile().subscribe((data) => {
-      this.profile = data;
-    });
+    
   }
 
   ngOnInit() {
+    this.getUserData();
+  }
+
+  async getUserData(){
+    await this.storage.create();
+   var dataUser =  await this.storage.get('user');
+   this.profile = JSON.parse(dataUser).user;
+    console.log(this.profile);
   }
 
   calc() {
-    
+    this.router.navigate(['/calcprevprofsp'])
   }
 
   async logout() {
