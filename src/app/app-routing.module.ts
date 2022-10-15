@@ -9,6 +9,7 @@ import {
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+//const redirectLoggedInToCalcprevprofsp = () => redirectLoggedInTo(['calcprevprofsp']);
 
 
 const routes: Routes = [
@@ -27,6 +28,17 @@ const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full',
   },
+  {
+    //path: 'calc', component: CalcprevprofspPage
+    
+    path: 'calcprevprofsp',
+    loadChildren: () => import('./calcprevprofsp/calcprevprofsp.module').then( m => m.CalcprevprofspPageModule),
+    
+    //...canActivate(redirectLoggedInToCalcprevprofsp),  
+    
+   
+  },
+
 
 ];
 
@@ -36,4 +48,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

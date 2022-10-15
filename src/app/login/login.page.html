@@ -1,26 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
-  <form [formGroup]="credentials" (ngSubmit)="login()">
+<ion-slides>
+  <ion-slide>
+    <div class="container top">
+      <img src="/assets/img/univesp.png">
+      <div class="slide-inner ion-padding">
+      <form [formGroup]="credentials" (ngSubmit)="login()">
 
-    <ion-item fill="solid" class="ion-margin-bottom">
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
-      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
-    </ion-item>
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+          <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
+          </ion-item>
 
-    <ion-item fill="solid" class="ion-margin-bottom">
-      <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
-      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 8 characters</ion-note>
-    </ion-item>
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
+          <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 8 characters</ion-note>
+          </ion-item>
 
-    <ion-button expand=full type="submit" [disabled]="!credentials.valid">Login</ion-button>
-    <ion-button expand=full type="button" (click)="register()">Create account</ion-button>
+        <ion-button class="ion-margin-top" color="light" expand="block" type="submit" [disabled]="!credentials.valid">Login</ion-button>
+        <ion-button class="ion-margin-top" lines="none" color="light" expand=full type="button" (click)="register()">Cadastre-se</ion-button>
+      </form>
+      </div>
+    </div>
+  </ion-slide>
+</ion-slides>
+<div class="homestart">
+  <div class='logo'> </div>
 
-  </form>
-
-
+  <div class="container bottom ion-text-center">
+    <span>Esse aplicativo foi desenvolvido como Projeto Integrador III da turma de Engenharia Computação 2020, esse aplicativo calcula o tempo restante de trabalho de professores do estado de São Paulo</span>
+  </div>
+</div>
 </ion-content>
