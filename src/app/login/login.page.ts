@@ -44,10 +44,9 @@ export class LoginPage implements OnInit {
   async verifyLogin(){
     await this.storage.create();
     let storage = await this.storage.get('user');
-    console.log('**********************');
-    console.log(storage);
+
+   // console.log(storage);
     if(storage != null){
-      console.log('ir para home');
       this.router.navigateByUrl('/home', {replaceUrl: true});
     }
   }

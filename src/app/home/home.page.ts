@@ -45,6 +45,8 @@ export class HomePage {
   async logout() {
     this.authenticationService.logout();
     this.router.navigateByUrl('/', { replaceUrl: true });
+    this.storage.clear();
+    console.log()
   }
 
   async changeImage() {

@@ -1,9 +1,73 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>hellow calcprevprofsp</ion-title>
+  <ion-toolbar color="dark" class="titulo-geral">
+    <ion-title>Calculadora Previdênciaria SP</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="fundo">
+
+  <ion-toolbar class="sub-titulo">
+    <ion-title>Preencha todos campos!!</ion-title>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-radio-group value="biff">
+      <ion-list-header>
+        <ion-label>Sexo</ion-label>
+      </ion-list-header>
+
+      <ion-item class="fontes-geral">
+        <ion-label>Feminino</ion-label>
+        <ion-radio slot="start" value="biff"></ion-radio>
+      </ion-item>
+
+      <ion-item class="fontes-geral">
+        <ion-label>Masculino</ion-label>
+        <ion-radio slot="start" value="griff"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item class="fontes">
+    <ion-label>Data de Nascimento</ion-label>
+  </ion-item>
+
+  <ion-item class="fontes">
+    <ion-datetime-button slot="end" datetime="date"></ion-datetime-button>
+  </ion-item>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="date" presentation="date" (ionChange)="change($event)"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+  <ion-item>
+    <ion-label>Data de Ingresso no Estado</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-datetime-button slot="end" datetime="simon"></ion-datetime-button>
+  </ion-item>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime [presentation]="'date'" id="simon" [showDefaultButtons]="true"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+  <ion-item class="fontes">
+    <ion-label>Tempo de Contribuição INSS</ion-label>
+  </ion-item>
+
+  <ion-item class="inserir">
+    <ion-input type="number" text="center"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" shape="round" routerLink="/calc">Calcular</ion-button>
 
 </ion-content>

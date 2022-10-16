@@ -7,12 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calcprevprofsp.page.scss'],
 })
 export class CalcprevprofspPage implements OnInit {
+  selectedDates = [];
+
   
   constructor() { }
+
+  showSelectedDates(e) {
+    this.selectedDates = e.detail.value;
+  }
 
   ngOnInit() {
 
   }
+
+  change(event: any){
+    console.log(event);
+    }
+
+  changetwo(event: any){
+    console.log(event);
+    }  
 
   
 }
