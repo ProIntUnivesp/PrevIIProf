@@ -7,33 +7,16 @@ import {
 
 } from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
-
-
-const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
-    ...canActivate(redirectLoggedInToHome),
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
-    ...canActivate(redirectUnauthorizedToLogin),  
-  },
-  {
-    path: '**',
-    redirectTo: '',
-    pathMatch: 'full',
-  },
-
-];
-
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot([
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) },
+      { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
+      { path: 'calcprevprofsp', loadChildren: () => import('./calcprevprofsp/calcprevprofsp.module').then(m => m.CalcprevprofspPageModule) }
+    ])
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

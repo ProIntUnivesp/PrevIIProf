@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="dark" class="titulo-geral">
+  <ion-toolbar color="danger" class="titulo-geral">
     <ion-buttons slot="start">
       <ion-button (click)="logout()">
         <ion-icon slot="icon-only" name="log-out"></ion-icon>
@@ -8,6 +8,18 @@
     </ion-buttons>
     <ion-title>Calculadora Previdênciaria</ion-title>
   </ion-toolbar>
+
+  <div class="preview">
+    <ion-avatar (click)="changeImage()">
+      <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+
+      <ng-template #placeholder_avatar>
+        <div class="fallback">
+          <p>Select avatar</p>
+        </div>
+      </ng-template>
+    </ion-avatar>
+  </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -35,6 +47,7 @@
       públicos.
     </ion-card-content>
   </ion-card>
-
-  <ion-button class="botao" expand="full" shape="round" routerLink="/calc">Calculo Aposentadoria</ion-button>
+  
+ <ion-button (click)="calc()" expand="full">Calcular</ion-button>
+  
 </ion-content>
