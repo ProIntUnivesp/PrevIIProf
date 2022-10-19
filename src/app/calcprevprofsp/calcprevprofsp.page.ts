@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CalcprevprofspPage implements OnInit {
   selectedDates = [];
 
-  
+
   constructor() { }
 
   showSelectedDates(e) {
@@ -26,7 +26,7 @@ export class CalcprevprofspPage implements OnInit {
 
   changetwo(event: any){
     console.log(event);
-    }  
+    }
 
-  
+
 }
