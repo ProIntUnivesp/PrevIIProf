@@ -10,26 +10,27 @@
 
 <ion-content>
   <ion-card-content>
-  <p class="inicio">Para iniciar, é necessário preencher todos os campos:</p> 
-  
+  <p class="inicio">Para iniciar, é necessário preencher todos os campos:</p>
+
   <ion-list>
-    <ion-radio-group value="biff">
+    <ion-radio-group name="sexo" value="feminino" (ionChange)="changeGenre($event)">
       <ion-list-header>
         <ion-label class="fontes">Sexo</ion-label>
       </ion-list-header>
 
       <ion-item class="fontes-geral">
         <ion-label>Feminino</ion-label>
-        <ion-radio slot="start" value="biff"></ion-radio>
+        <ion-radio slot="start" value="feminino"></ion-radio>
       </ion-item>
 
       <ion-item class="fontes-geral">
         <ion-label>Masculino</ion-label>
-        <ion-radio slot="start" value="griff"></ion-radio>
+        <ion-radio slot="start" value="masculino"></ion-radio>
       </ion-item>
 
     </ion-radio-group>
   </ion-list>
+
 
   <ion-item class="fontes">
     <ion-label>Data de Nascimento</ion-label>
@@ -41,7 +42,7 @@
 
   <ion-modal [keepContentsMounted]="true">
     <ng-template>
-      <ion-datetime id="date" presentation="date" (ionChange)="change($event)"></ion-datetime>
+      <ion-datetime name="aniversario" id="date" presentation="date" (ionChange)="birthdayDate($event)" [showDefaultButtons]="true"></ion-datetime>
     </ng-template>
   </ion-modal>
 
@@ -55,7 +56,7 @@
 
   <ion-modal [keepContentsMounted]="true">
     <ng-template>
-      <ion-datetime [presentation]="'date'" id="simon" [showDefaultButtons]="true"></ion-datetime>
+      <ion-datetime name="ingresso" [presentation]="'date'" id="simon" (ionChange)="entryDate($event)" [showDefaultButtons]="true"></ion-datetime>
     </ng-template>
   </ion-modal>
 
@@ -64,7 +65,7 @@
   </ion-item>
 
   <ion-item class="inserir">
-    <ion-input type="number" text="center"></ion-input>
+    <ion-input name="tempoCont" value="0" (change)="time($event)" type="number" text="center"></ion-input>
   </ion-item>
 
   <ion-button size="small" expand="full" shape="round" routerLink="/calc">Calcular
