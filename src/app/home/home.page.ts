@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
@@ -12,20 +12,18 @@ import { Storage } from '@ionic/storage-angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
     profile = null;
 
   constructor(
-    private activatedRoute:ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private avatarService: AvatarService,
     private authenticationService: AuthenticationService,
     private router: Router,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private storage: Storage,
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.getUserData();
@@ -33,20 +31,20 @@ export class HomePage {
 
   async getUserData(){
     await this.storage.create();
-   var dataUser =  await this.storage.get('user');
+   const dataUser =  await this.storage.get('user');
    this.profile = JSON.parse(dataUser).user;
     console.log(this.profile);
   }
 
   calc() {
-    this.router.navigate(['/calcprevprofsp'])
+    this.router.navigate(['/calcprevprofsp']);
   }
 
   async logout() {
     this.authenticationService.logout();
     this.router.navigateByUrl('/', { replaceUrl: true });
     this.storage.clear();
-    console.log()
+    console.log();
   }
 
   async changeImage() {
@@ -69,7 +67,7 @@ export class HomePage {
         const alert = await this.alertController.create({
           header: 'Upload Failed',
           message: 'There was a problem uploading your avatar.',
-          buttons: ["OK"],
+          buttons: ['OK'],
         });
         await alert.present();
       }
