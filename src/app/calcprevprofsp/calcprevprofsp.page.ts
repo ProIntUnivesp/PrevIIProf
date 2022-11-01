@@ -17,12 +17,7 @@ export class CalcprevprofspPage {
   public meses = 0;
   public dias = 0;
 
-
-  constructor(
-
-    private router: Router
-
-  ) {}
+  constructor(private router: Router) {}
 
   time(e) {
     this.tempoCont = e.target.value;
@@ -45,29 +40,23 @@ export class CalcprevprofspPage {
   }
 
   resultado() {
-
     this.router.navigate(['/resultado']);
   }
 
   calcular() {
-
     const today = new Date();
     const birthDate = new Date(this.aniversario);
-    let idade = (today.getFullYear() - birthDate.getFullYear()) * 365;
-    const m = today.getMonth() - birthDate.getMonth();
+    const diffInMs = today.getTime() - birthDate.getTime();
+    console.log(diffInMs);
+    let diasIdade = diffInMs / (24 * 3600 * 1000);
 
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      idade--;
-    }
+    console.log(diasIdade);
 
     const dtIngresso = new Date(this.ingresso);
-    let contrib = (today.getFullYear() - dtIngresso.getFullYear()) * 365;
-    const m2 = today.getMonth() - dtIngresso.getMonth();
+    const difEmMs = today.getTime() - dtIngresso.getTime();
+    let diasContrib = difEmMs / (24 * 3600 * 1000);
 
-    if (m2 < 0 || (m2 === 0 && today.getDate() < dtIngresso.getDate())) {
-      contrib--;
-    }
-
+    console.log(diasContrib);
 
     let contribResFem = 0;
     let contribResMas = 0;
@@ -80,35 +69,33 @@ export class CalcprevprofspPage {
     const idadeMas = 20440;
 
     if (this.sexo === 'masculino') {
-
-      contribResMas = (contribMas - contrib) - this.tempoCont;
-      idadeResMas = (idadeMas - idade) / 365;
+      contribResMas = contribMas - diasContrib - this.tempoCont;
+      idadeResMas = idadeMas - diasIdade;
       this.converter(contribResMas);
+      this.converter(idadeResMas);
 
+      this.resultado();
     } else {
-
-      contribResFem = (contribFem - contrib) - this.tempoCont;
-      idadeResFem = (idadeFem - idade) /365;
+      contribResFem = contribFem - diasContrib - this.tempoCont;
+      idadeResFem = idadeFem - diasIdade;
       this.converter(contribResFem);
+      this.converter(idadeResFem);
+
+      this.resultado();
     }
 
-    console.log(contribResMas);
-    console.log(idadeResMas);
-    console.log(contribResFem);
-    console.log(idadeResFem);
-    console.log(this.anos, this.meses, this.dias);
-
-
+    console.log('Tempo Contrib. Rest. Masc. ', contribResMas);
+    console.log('Idade Rest. Masc. ', idadeResMas);
+    console.log('Tempo Contrib. Rest. Fem. ', contribResFem);
+    console.log('Idade Rest. Fem. ', idadeResFem);
+    console.log(this.anos, ' Anos', this.meses, ' Meses', this.dias, ' Dias');
   }
 
   converter(valor) {
-
     this.anos = valor / 365;
     this.meses = (valor % 365) / 30;
     this.dias = (valor % 365) % 30;
 
-    return (this.anos, this.meses, this.dias);
-
+    return this.anos, this.meses, this.dias;
   }
-
 }

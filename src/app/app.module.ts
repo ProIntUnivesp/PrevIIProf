@@ -16,12 +16,6 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 //import { Ionic } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
-
-
-
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -31,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    
+
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
