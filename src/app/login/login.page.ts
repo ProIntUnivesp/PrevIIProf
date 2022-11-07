@@ -1,6 +1,6 @@
 import { NavController } from '@ionic/angular';
 // import { AuthenticationService } from './../services/authentication.service';
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     private storage: Storage,
     private navCtrl: NavController,
   ) {}
-  
+
   get email(){
     return this.credentials.get('email');
   }
@@ -46,9 +46,15 @@ export class LoginPage implements OnInit {
 
   async verifyLogin(){
     await this.storage.create();
+<<<<<<< HEAD
     let storage = await this.storage.get('user');
     console.log('**********************');
     console.log(storage);
+=======
+    const storage = await this.storage.get('user');
+
+   // console.log(storage);
+>>>>>>> f901f25a6ac241f7b2d2431dcc9e9533f0f2b843
     if(storage != null){
       this.router.navigateByUrl('/login', {replaceUrl: true});
     }
@@ -96,7 +102,7 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/home', {replaceUrl: true});
     } else {
       this.showAlert('Login failed', 'Please try again!');
-    }    
+    }
   }
 
   async showAlert(header, message) {

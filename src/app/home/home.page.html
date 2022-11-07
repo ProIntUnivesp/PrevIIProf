@@ -14,7 +14,7 @@
       <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
 
       <ng-template #placeholder_avatar>
-        <div class="fallback">
+        <div class="fallback" >
           <p>Select avatar</p>
         </div>
       </ng-template>
@@ -28,26 +28,26 @@
     <ion-card-header>
       <ion-card-subtitle>Motivação</ion-card-subtitle>
     </ion-card-header>
-  
-    <ion-card-content class="ion-text-justify">
-      Esse é um projeto desenvolvimento pelos alunos da faculdade UNIVESP,
-      turma que inicio no ano de 2020.
 
-      O tema do seu Projeto Integrador (PI) neste semestre era Desenvolver um software
-      com framework web ou aplicativo que utilize banco de dados, inclua script web 
+    <ion-card-content class="ion-text-left">
+      Esse é um projeto desenvolvido pelos alunos da faculdade UNIVESP,
+      turma que iniciou no ano de 2020.
+
+      O tema do Projeto Integrador (PI) neste semestre era Desenvolver um software
+      com framework web ou aplicativo que utilize banco de dados, inclua script web
       (Javascript), nuvem, acessibilidade, controle de versão, integração contínua e testes.
       Incluir um dos seguintes requisitos: uso e fornecimento de API, análises de dados e IoT.
 
       O grupo optou por desenvolver um aplicativo híbrido para ANDROID E IOS utilizando o
       framework IONIC e programando com ANGULAR.
 
-      Esse aplicativo temo objetivo de calcular o tempo restante para Aposentadoria
+      Esse aplicativo tem o objetivo de calcular o tempo restante para Aposentadoria
       dos professores do Estado de São Paulo, necessidade que foi levantada após pesquisa
-      que mostrou várias dúvidas após a alteração das regras de aposentadoria para sevidores
+      que mostrou várias dúvidas após a alteração das regras de aposentadoria para servidores
       públicos.
     </ion-card-content>
   </ion-card>
-  
- <ion-button (click)="calc()" expand="full">Calcular</ion-button>
-  
+
+ <ion-button (click)="calc()" size="small" expand="full" shape="round">Calcular</ion-button>
+
 </ion-content>
