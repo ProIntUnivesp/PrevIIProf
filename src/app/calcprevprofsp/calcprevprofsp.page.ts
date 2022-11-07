@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './calcprevprofsp.page.html',
   styleUrls: ['./calcprevprofsp.page.scss'],
 })
-export class CalcprevprofspPage {
+export class CalcprevprofspPage implements OnInit {
   selectedDates = [];
 
   public tempoCont = 0;
@@ -17,12 +17,10 @@ export class CalcprevprofspPage {
   public meses = 0;
   public dias = 0;
 
+  constructor(private router: Router) {}
 
-  constructor(
-
-    private router: Router
-
-  ) {}
+  ngOnInit(): void {
+}
 
   time(e) {
     this.tempoCont = e.target.value;
@@ -45,29 +43,22 @@ export class CalcprevprofspPage {
   }
 
   resultado() {
-
     this.router.navigate(['/resultado']);
   }
 
   calcular() {
 
+    // Declaração de Variáveis e Conversões de Datas em Dias corridos:
+
     const today = new Date();
     const birthDate = new Date(this.aniversario);
-    let idade = (today.getFullYear() - birthDate.getFullYear()) * 365;
-    const m = today.getMonth() - birthDate.getMonth();
+    const diffInMs = today.getTime() - birthDate.getTime();
+    const diasIdade = diffInMs / (24 * 3600 * 1000);
 
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      idade--;
-    }
 
     const dtIngresso = new Date(this.ingresso);
-    let contrib = (today.getFullYear() - dtIngresso.getFullYear()) * 365;
-    const m2 = today.getMonth() - dtIngresso.getMonth();
-
-    if (m2 < 0 || (m2 === 0 && today.getDate() < dtIngresso.getDate())) {
-      contrib--;
-    }
-
+    const difEmMs = today.getTime() - dtIngresso.getTime();
+    const diasContrib = difEmMs / (24 * 3600 * 1000);
 
     let contribResFem = 0;
     let contribResMas = 0;
@@ -78,37 +69,105 @@ export class CalcprevprofspPage {
     const contribMas = 10950;
     const idadeFem = 18615;
     const idadeMas = 20440;
+    const pontosFem = 84;
+    const pontosMasc = 94;
+
+    // Cálculos para Sexo Masculino:
 
     if (this.sexo === 'masculino') {
 
-      contribResMas = (contribMas - contrib) - this.tempoCont;
-      idadeResMas = (idadeMas - idade) / 365;
-      this.converter(contribResMas);
+      contribResMas = contribMas - diasContrib - this.tempoCont;
+      idadeResMas = idadeMas - diasIdade;
+
+      const pontos = +(((diasIdade + diasContrib) / 365).toFixed(2));
+      console.log('Você tem ', pontos, 'Pontos!');
+
+      if (pontos >= pontosMasc) {
+
+        console.log('Já pode se aposentar por Pontos!');
+
+      } else {
+
+        const pontosResMas = +((pontosMasc - pontos).toFixed(2));
+
+        console.log('Faltam', pontosResMas, 'pontos para se aposentar!');
+
+      }
+
+      if (contribResMas <= 0) {
+        console.log('Você já cumpriu o tempo de contribuição!');
+
+      } else {
+
+        this.converter(contribResMas);
+        console.log('Faltam ', this.anos, 'Anos e ', this.meses, 'meses de contribuição!');
+      }
+
+      if (idadeResMas <= 0) {
+        console.log('Você já tem idade para se aposentar!');
+
+      } else {
+
+        this.converter(idadeResMas);
+        console.log('Faltam ', this.anos, 'Anos e ', this.meses, 'Meses de idade!');
+      }
+
+      this.resultado();
+
+      // Fim Sexo Masculino
+
+    // Cálculos para Sexo Feminino:
 
     } else {
 
-      contribResFem = (contribFem - contrib) - this.tempoCont;
-      idadeResFem = (idadeFem - idade) /365;
-      this.converter(contribResFem);
+      contribResFem = contribFem - diasContrib - this.tempoCont;
+      idadeResFem = idadeFem - diasIdade;
+
+      const pontos = +(((diasIdade + diasContrib) / 365).toFixed(2));
+      console.log('Você tem ', pontos, 'Pontos!');
+
+      if (pontos >= pontosFem) {
+
+        console.log('Já pode se aposentar por Pontos!');
+
+      } else {
+
+        const pontosResFem = +((pontosFem - pontos).toFixed(2));
+        console.log('Faltam', pontosResFem, 'pontos para se aposentar!');
+
+      }
+
+      if (contribResFem <= 0) {
+        console.log('Você já cumpriu o tempo de contribuição!');
+
+      } else {
+
+        this.converter(contribResFem);
+        console.log('Faltam ', this.anos, 'Anos e ', this.meses, 'meses de contribuição!');
+      }
+
+      if (idadeResFem <= 0) {
+        console.log('Você já tem idade para se aposentar!');
+
+      } else {
+
+        this.converter(idadeResFem);
+        console.log('Faltam ', this.anos, 'Anos e ', this.meses, 'Meses de idade!');
+      }
+
+      this.resultado();
     }
+    // Fim Sexo Feminino.
+}
 
-    console.log(contribResMas);
-    console.log(idadeResMas);
-    console.log(contribResFem);
-    console.log(idadeResFem);
-    console.log(this.anos, this.meses, this.dias);
-
-
-  }
+  // Função que converte dias em Anos, Meses e Dias:
 
   converter(valor) {
-
-    this.anos = valor / 365;
-    this.meses = (valor % 365) / 30;
+    this.anos = Math.floor(valor / 365);
+    this.meses = +(((valor % 365) / 30).toFixed(2));
     this.dias = (valor % 365) % 30;
 
     return (this.anos, this.meses, this.dias);
-
   }
 
 }
