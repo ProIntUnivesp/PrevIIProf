@@ -1,5 +1,5 @@
 // import { AuthenticationService } from './../services/authentication.service';
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
     private router: Router,
     private storage: Storage,
   ) {}
-  
+
   get email(){
     return this.credentials.get('email');
   }
@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
 
   async verifyLogin(){
     await this.storage.create();
-    let storage = await this.storage.get('user');
+    const storage = await this.storage.get('user');
 
    // console.log(storage);
     if(storage != null){
@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/home', {replaceUrl: true});
     } else {
       this.showAlert('Login failed', 'Please try again!');
-    }    
+    }
   }
 
   async showAlert(header, message) {

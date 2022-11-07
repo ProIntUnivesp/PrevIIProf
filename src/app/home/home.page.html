@@ -14,7 +14,7 @@
       <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
 
       <ng-template #placeholder_avatar>
-        <div class="fallback">
+        <div class="fallback" >
           <p>Select avatar</p>
         </div>
       </ng-template>
@@ -29,7 +29,7 @@
       <ion-card-subtitle>Motivação</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content class="ion-text-justify">
+    <ion-card-content class="ion-text-left">
       Esse é um projeto desenvolvido pelos alunos da faculdade UNIVESP,
       turma que iniciou no ano de 2020.
 
@@ -48,6 +48,6 @@
     </ion-card-content>
   </ion-card>
 
- <ion-button (click)="calc()" expand="full">Calcular</ion-button>
+ <ion-button (click)="calc()" size="small" expand="full" shape="round">Calcular</ion-button>
 
 </ion-content>
