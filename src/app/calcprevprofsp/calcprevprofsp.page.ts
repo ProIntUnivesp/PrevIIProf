@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-calcprevprofsp',
@@ -16,7 +16,10 @@ export class CalcprevprofspPage implements OnInit {
   public anos = 0;
   public meses = 0;
   public dias = 0;
+  public pontos = 0;
+  
 
+  
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -42,7 +45,21 @@ export class CalcprevprofspPage implements OnInit {
   }
 
   resultado() {
-    this.router.navigate(['/resultado']);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+         'tempo': this.tempoCont,
+         'aniver': this.aniversario,
+         'ingresso': this.ingresso,
+         'sexo': this.sexo,
+         'idade': this.anos,
+         'meses': this.meses,
+         'dias': this.dias,
+         'pontos': this.pontos,
+         
+      }
+    };
+    
+    this.router.navigate(['/resultado'], navigationExtras);
   }
 
   calcular() {
@@ -81,13 +98,16 @@ export class CalcprevprofspPage implements OnInit {
       contribResMas = contribMas - diasContrib - this.tempoCont;
       idadeResMas = idadeMas - diasIdade;
 
-      const pontos = +((diasIdade + diasContrib) / 365).toFixed(2);
-      console.log('Você tem ', pontos, 'Pontos!');
+      this.pontos = +(((diasIdade + diasContrib) / 365).toFixed(2));
+      console.log('Você tem ',  this.pontos, 'Pontos!');
 
-      if (pontos >= pontosMasc) {
+      if ( this.pontos >= pontosMasc) {
+
         console.log('Já pode se aposentar por Pontos!');
       } else {
-        const pontosResMas = +(pontosMasc - pontos).toFixed(2);
+
+        const pontosResMas = +((pontosMasc -  this.pontos).toFixed(2));
+
 
         console.log('Faltam', pontosResMas, 'pontos para se aposentar!');
       }
@@ -127,13 +147,16 @@ export class CalcprevprofspPage implements OnInit {
       contribResFem = contribFem - diasContrib - this.tempoCont;
       idadeResFem = idadeFem - diasIdade;
 
-      const pontos = +((diasIdade + diasContrib) / 365).toFixed(2);
-      console.log('Você tem ', pontos, 'Pontos!');
+        this.pontos = +(((diasIdade + diasContrib) / 365).toFixed(2));
+      console.log('Você tem ',  this.pontos, 'Pontos!');
 
-      if (pontos >= pontosFem) {
+      if ( this.pontos >= pontosFem) {
+
         console.log('Já pode se aposentar por Pontos!');
       } else {
-        const pontosResFem = +(pontosFem - pontos).toFixed(2);
+
+        const pontosResFem = +((pontosFem -  this.pontos).toFixed(2));
+
         console.log('Faltam', pontosResFem, 'pontos para se aposentar!');
       }
 
@@ -163,6 +186,18 @@ export class CalcprevprofspPage implements OnInit {
         );
       }
 
+      if(this.aniversario == null){
+        alert('Favor, informar a data de aniversário');
+        return false;
+
+      }
+
+      if(this.anos == null){
+        alert('Favor, informar os Anos');
+        return false;
+
+      }
+
       this.resultado();
     }
     // Fim Sexo Feminino.
@@ -177,4 +212,5 @@ export class CalcprevprofspPage implements OnInit {
 
     return this.anos, this.meses, this.dias;
   }
+
 }

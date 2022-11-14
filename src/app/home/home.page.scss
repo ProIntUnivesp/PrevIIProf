@@ -2,10 +2,15 @@ ion-card-content {
   background: linear-gradient(white, #e67f8f, #636363);
   color: #1c1b1b;
   opacity: 0.9;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 20px;
+  text-align: justify;
 }
 
+.mot-text {
+  font-size: 12px;
+  text-align: justify;
+}
 ion-avatar {
   width: 128px;
   height: 128px;
@@ -62,4 +67,27 @@ ion-avatar {
 .botao {
 margin-top: 20px;
 background-color: #1c1b1b;
+}
+
+.bt {
+  border: -5;
+  padding: 5px;
+  width: 350px;
+  height: 50px;
+  display: inline-block;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+ion-slide {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 40%;
+  border: 10;
+  
+} 
+
+ion-slide p{
+  color: linear-gradient(white, #e67f8f, #636363);
 }

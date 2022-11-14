@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 // import { AuthenticationService } from './../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -5,6 +6,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { Storage } from '@ionic/storage-angular';
+import { resolve } from 'dns';
 
 
 @Component({
@@ -22,6 +24,7 @@ export class LoginPage implements OnInit {
     private authenticationService: AuthenticationService,
     private router: Router,
     private storage: Storage,
+    private navCtrl: NavController,
   ) {}
 
   get email(){
@@ -47,9 +50,24 @@ export class LoginPage implements OnInit {
 
    // console.log(storage);
     if(storage != null){
-      this.router.navigateByUrl('/home', {replaceUrl: true});
+      this.router.navigateByUrl('/login', {replaceUrl: true});
     }
   }
+
+  ionViewCanEnter() {
+    this.storage.get('user')
+      .then((resolve) => {
+        if (resolve.length > 0) {
+          this.navCtrl.navigateRoot('login');
+        } else {
+          return true;
+        }
+      })
+      .catch((error) => {
+        return true;
+      })
+  }
+
 
   async register(){
     const loading = await this.loadingController.create();

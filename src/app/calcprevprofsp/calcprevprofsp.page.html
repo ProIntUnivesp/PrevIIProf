@@ -38,7 +38,7 @@
       <ion-datetime-button slot="end" datetime="date"></ion-datetime-button>
     </ion-item>
 
-    <ion-modal [keepContentsMounted]="true">
+    <ion-modal class="fontes" [keepContentsMounted]="true">
       <ng-template>
         <ion-datetime name="aniversario" id="date" presentation="date" (ionChange)="birthdayDate($event)" [showDefaultButtons]="true"></ion-datetime>
       </ng-template>
@@ -49,7 +49,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-datetime-button slot="end" datetime="simon"></ion-datetime-button>
+      <ion-datetime-button class="fontes" slot="end" datetime="simon"></ion-datetime-button>
     </ion-item>
 
     <ion-modal [keepContentsMounted]="true">
@@ -71,4 +71,7 @@
     </ion-button>
   </ion-card-content>
 
+  <ion-item>
+    <h1>pontos</h1>
+  </ion-item>
 </ion-content>
