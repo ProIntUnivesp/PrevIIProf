@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Resultados:</ion-title>
+  <ion-toolbar color="danger">
+    <ion-title>Calculo para Aposentadoria</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -9,29 +9,45 @@
 
 <ion-content>
   <ion-card-content>
-    
-    <h1>Sexo</h1>{{data.sexo}}<br>
-    <br>
-    
-    <h1>Data de Nascimento</h1>{{data.aniversario}}<br>
-    <br>
 
-    <h1>Ingresso no Estado</h1>{{data.ingresso}}<br>
-    <br>
+    <table border="5">
+      <tr>DADOS PESSOAIS</tr>
+      <tr><td>SEXO</td><td> {{data.sexo}} </td></tr>
+      <tr><td>IDADE</td><td> {{data.dIdade}} </td></tr>
+      <tr><td>TEMPO DE CONTRIBUIÇÃO</td><td> {{data.tempo}} </td></tr>
+    </table>
 
-    <h1>Tempo de Contribuição INSS</h1>{{data.tempo}}<br>
-    <br>
 
-    <h1>Faltam {{data.idade}} anos</h1><br>
-    <br>
+    <table class="fullTable">
 
-    <h1>Faltam {{data.meses}} meses</h1><br>
-    <br>
-    
-    <h1>Faltam {{data.dias}} dias</h1><br>
-    <br>
+  
+    <u>INFORMAÇÕES GERAIS</u>
 
+    <h1>Sexo =>  {{data.sexo}}</h1><br>
+    <h1>Você tem => {{data.dIdade}} anos de idade.</h1><br>
+    <h1>Tempo de Contribuição INSS => {{data.tempo}}</h1><br>
+  
+    <u>DADOS DE CONTRIBUIÇÃO ATUAL</u>
+
+    <h1>Você tem {{data.tContrib}} anos de Contribuição</h1><br>
+
+    <u>PARA APOSENTADORIA FALTAM</u>
+
+    <h1>Faltam {{data.idade}} ano(os), {{data.meses}} mes(es) de idade.</h1><br>
+    <h1>{{data.fContrib}}</h1><br>
+
+    <u>PONTUAÇÃO</u>
+  
     <h1>Você tem {{data.pontos}} pontos</h1><br>
+    <h1>Faltam {{data.pRestante}} pontos para se aposentar</h1><br>
+    
+    <u>STATUS DA APOSENTADORIA</u>
+
+    <h1>{{data.tComp}}</h1><br>
+    <h1>{{data.tIdade}}</h1><br>
+    <h1>{{data.tPontos}}</h1><br>
+
+  </table>
   
   </ion-card-content>
 </ion-content>
