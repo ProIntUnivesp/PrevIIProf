@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Resultados:</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    
+    <h1>Sexo</h1>{{data.sexo}}<br>
+    <br>
+    
+    <h1>Data de Nascimento</h1>{{data.aniversario}}<br>
+    <br>
+
+    <h1>Ingresso no Estado</h1>{{data.ingresso}}<br>
+    <br>
+
+    <h1>Tempo de Contribuição INSS</h1>{{data.tempo}}<br>
+    <br>
+
+    <h1>Faltam {{data.idade}} anos</h1><br>
+    <br>
+
+    <h1>Faltam {{data.meses}} meses</h1><br>
+    <br>
+    
+    <h1>Faltam {{data.dias}} dias</h1><br>
+    <br>
+
+    <h1>Você tem {{data.pontos}} pontos</h1><br>
+  
+  </ion-card-content>
+</ion-content>

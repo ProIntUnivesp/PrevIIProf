@@ -1,6 +1,44 @@
+ion-card-content {
+  background: linear-gradient(white, #e67f8f, #636363);
+  color: #1c1b1b;
+  opacity: 0.9;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: justify;
+}
+
+.mot-text {
+  font-size: 12px;
+  text-align: justify;
+}
+ion-avatar {
+  width: 128px;
+  height: 128px;
+}
+
+.preview {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.fallback {
+
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: #1c1b1b;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 500;
+}
+
+
+
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -9,13 +47,13 @@
 }
 
 #container strong {
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 13px;
+  line-height: 20px;
 }
 
 #container p {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 13px;
+  line-height: 20px;
 
   color: #8c8c8c;
 
@@ -27,5 +65,29 @@
 }
 
 .botao {
-margin-top: 170px;
+margin-top: 20px;
+background-color: #1c1b1b;
+}
+
+.bt {
+  border: -5;
+  padding: 5px;
+  width: 350px;
+  height: 50px;
+  display: inline-block;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+ion-slide {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 40%;
+  border: 10;
+  
+} 
+
+ion-slide p{
+  color: linear-gradient(white, #e67f8f, #636363);
 }

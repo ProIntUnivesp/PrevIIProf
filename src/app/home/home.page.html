@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="dark" class="titulo-geral">
+  <ion-toolbar color="danger" class="titulo-geral">
     <ion-buttons slot="start">
       <ion-button (click)="logout()">
         <ion-icon slot="icon-only" name="log-out"></ion-icon>
@@ -12,29 +12,39 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-slides pager="true">
+    
+    <ion-slide>
+      <img src="..\..\assets\img\a72ca2708bee8bb63685fe7152d25e28.jpg" />
+    </ion-slide>
+    
+    <ion-slide>
+      <img src="..\..\assets\img\Bandeira_do_governador_do_estado_de_São_Paulo.svg.png" />
+    </ion-slide>
+
+    <ion-slide>
+      <img src="..\..\assets\img\governo-do-estado-de-sao-paulo-sp-logo.png" />
+    </ion-slide>
+    
+  </ion-slides>
+
   <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Motivação</ion-card-subtitle>
     </ion-card-header>
-  
-    <ion-card-content class="ion-text-justify">
-      Esse é um projeto desenvolvimento pelos alunos da faculdade UNIVESP,
-      turma que inicio no ano de 2020.
 
-      O tema do seu Projeto Integrador (PI) neste semestre era Desenvolver um software
-      com framework web ou aplicativo que utilize banco de dados, inclua script web 
-      (Javascript), nuvem, acessibilidade, controle de versão, integração contínua e testes.
+    <ion-card-content class="mot-text">
+      Esse é um projeto desenvolvido pelos alunos da faculdade UNIVESP, turma que iniciou no ano de 2020.
+
+      O tema do Projeto Integrador (PI) neste semestre era Desenvolver um software com framework web ou aplicativo que utilize banco de dados, inclua script web (Javascript), nuvem, acessibilidade, controle de versão, integração contínua e testes.
       Incluir um dos seguintes requisitos: uso e fornecimento de API, análises de dados e IoT.
 
-      O grupo optou por desenvolver um aplicativo híbrido para ANDROID E IOS utilizando o
-      framework IONIC e programando com ANGULAR.
+      O grupo optou por desenvolver um aplicativo híbrido para ANDROID E IOS utilizando o framework IONIC e programando com ANGULAR.
 
-      Esse aplicativo temo objetivo de calcular o tempo restante para Aposentadoria
-      dos professores do Estado de São Paulo, necessidade que foi levantada após pesquisa
-      que mostrou várias dúvidas após a alteração das regras de aposentadoria para sevidores
-      públicos.
+      Esse aplicativo tem o objetivo de calcular o tempo restante para Aposentadoria dos professores do Estado de São Paulo, necessidade que foi levantada após pesquisa que mostrou várias dúvidas após a alteração das regras de aposentadoria para servidores públicos.
     </ion-card-content>
   </ion-card>
 
-  <ion-button class="botao" expand="full" shape="round" routerLink="/calc">Calculo Aposentadoria</ion-button>
+ <ion-button (click)="calc()" class="bt" size="small" expand="full" shape="round">Calcular</ion-button>
+
 </ion-content>

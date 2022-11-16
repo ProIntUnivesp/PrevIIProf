@@ -1,9 +1,12 @@
+import { NavController } from '@ionic/angular';
 // import { AuthenticationService } from './../services/authentication.service';
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import { Storage } from '@ionic/storage-angular';
+import { resolve } from 'dns';
 
 
 @Component({
@@ -19,9 +22,11 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private storage: Storage,
+    private navCtrl: NavController,
   ) {}
-  
+
   get email(){
     return this.credentials.get('email');
   }
@@ -31,12 +36,38 @@ export class LoginPage implements OnInit {
   }
 
 
-  ngOnInit() {
+   ngOnInit() {
+    this.verifyLogin();
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
+
+  async verifyLogin(){
+    await this.storage.create();
+    const storage = await this.storage.get('user');
+
+   // console.log(storage);
+    if(storage != null){
+      this.router.navigateByUrl('/login', {replaceUrl: true});
+    }
+  }
+
+  ionViewCanEnter() {
+    this.storage.get('user')
+      .then((resolve) => {
+        if (resolve.length > 0) {
+          this.navCtrl.navigateRoot('login');
+        } else {
+          return true;
+        }
+      })
+      .catch((error) => {
+        return true;
+      })
+  }
+
 
   async register(){
     const loading = await this.loadingController.create();
@@ -53,7 +84,7 @@ export class LoginPage implements OnInit {
   }
 
 
-  async login() {
+  async login(){
     const loading = await this.loadingController.create();
     await loading.present();
 
@@ -61,10 +92,11 @@ export class LoginPage implements OnInit {
     await loading.dismiss();
 
     if (user) {
+      await this.storage.set('user', JSON.stringify(user));
       this.router.navigateByUrl('/home', {replaceUrl: true});
     } else {
       this.showAlert('Login failed', 'Please try again!');
-    }    
+    }
   }
 
   async showAlert(header, message) {
