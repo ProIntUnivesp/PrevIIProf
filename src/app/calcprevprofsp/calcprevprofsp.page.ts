@@ -151,7 +151,7 @@ export class CalcprevprofspPage implements OnInit {
         console.log('Você já cumpriu o tempo de contribuição!');
       } else {
         this.converter(contribResMas);
-        this.fContrib = ('Faltam ')+''+this.anos+" ano(s) e "+this.meses+' mês(es) de contribuição!';
+        this.fContrib = this.anos+" ano(s) e "+this.meses+' mês(es)';
         console.log(
           'Faltam ',
           this.anos,
@@ -210,7 +210,7 @@ export class CalcprevprofspPage implements OnInit {
        
       } else {
         this.converter(contribResFem);
-        this.fContrib = ('Faltam ')+''+this.anos+" ano(s) e "+this.meses+' mês(es) de contribuição!'  ;
+        this.fContrib = this.anos+" ano(s) e "+this.meses+' mês(es)'  ;
         console.log(
           'Faltam ',
           this.anos,

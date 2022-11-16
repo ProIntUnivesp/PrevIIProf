@@ -10,44 +10,112 @@
 <ion-content>
   <ion-card-content>
 
-    <table border="5">
-      <tr>DADOS PESSOAIS</tr>
-      <tr><td>SEXO</td><td> {{data.sexo}} </td></tr>
-      <tr><td>IDADE</td><td> {{data.dIdade}} </td></tr>
-      <tr><td>TEMPO DE CONTRIBUIÇÃO</td><td> {{data.tempo}} </td></tr>
-    </table>
+    <h1>RESUMO DE CALCULO</h1>
 
+    <table>
 
-    <table class="fullTable">
-
-  
-    <u>INFORMAÇÕES GERAIS</u>
-
-    <h1>Sexo =>  {{data.sexo}}</h1><br>
-    <h1>Você tem => {{data.dIdade}} anos de idade.</h1><br>
-    <h1>Tempo de Contribuição INSS => {{data.tempo}}</h1><br>
-  
-    <u>DADOS DE CONTRIBUIÇÃO ATUAL</u>
-
-    <h1>Você tem {{data.tContrib}} anos de Contribuição</h1><br>
-
-    <u>PARA APOSENTADORIA FALTAM</u>
-
-    <h1>Faltam {{data.idade}} ano(os), {{data.meses}} mes(es) de idade.</h1><br>
-    <h1>{{data.fContrib}}</h1><br>
-
-    <u>PONTUAÇÃO</u>
-  
-    <h1>Você tem {{data.pontos}} pontos</h1><br>
-    <h1>Faltam {{data.pRestante}} pontos para se aposentar</h1><br>
-    
-    <u>STATUS DA APOSENTADORIA</u>
-
-    <h1>{{data.tComp}}</h1><br>
-    <h1>{{data.tIdade}}</h1><br>
-    <h1>{{data.tPontos}}</h1><br>
-
+      <thead>
+          <tr>
+              <th colspan="2" scope="col">INFORMAÇÕES GERAIS</th> 
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <th scope="row">Sexo</th>
+              <td>{{data.sexo}}</td>
+          </tr>
+          <tr>
+              <th scope="row">Idade</th>
+              <td>{{data.dIdade}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Tempo de Contribuição</th>
+            <td>{{data.tempo}}</td>
+        </tr>
+      </tbody>
   </table>
-  
+<br>
+
+<table>
+      
+  <thead>
+      <tr>
+          <th colspan="2" scope="col">TEMPO DE CONTRIBUIÇÃO ATUAL</th> 
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <th scope="row">Servidor</th>
+          <td>{{data.tContrib}}</td>
+      </tr>
+      <tr>
+          <th scope="row">CLT</th>
+          <td>{{data.dIdade}}</td>
+      </tr>
+  </tbody>
+</table>
+<br>
+
+<table>
+      
+  <thead>
+      <tr>
+          <th colspan="2" scope="col">PENDÊNCIAS PARA APOSENTADORIA</th> 
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <th scope="row">Idade</th>
+          <td>{{data.idade}} ano(s), {{data.meses}} mês(es)</td>
+      </tr>
+      <tr>
+          <th scope="row">Contribuição</th>
+          <td>{{data.fContrib}}</td>
+      </tr>
+  </tbody>
+</table>
+<br>
+
+<table>
+      
+  <thead>
+      <tr>
+          <th colspan="2" scope="col">PONTUAÇÃO</th> 
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <th scope="row">Pontuação Atual</th>
+          <td>{{data.pontos}}</td>
+      </tr>
+      <tr>
+          <th scope="row">Pontuação Faltante</th>
+          <td>{{data.pRestante}}</td>
+      </tr>
+  </tbody>
+</table>
+<br>  
+<table>
+  <thead>
+      <tr>
+          <th colspan="2" scope="col">STATUS DA APOSENTADORIA</th> 
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <th scope="row">Contribuição</th>
+          <td>{{data.tComp}}</td>
+      </tr>
+      <tr>
+          <th scope="row">Idade</th>
+          <td>{{data.tIdade}}</td>
+      </tr>
+      <tr>
+        <th scope="row" style="width: 30%;">Pontuação</th>
+        <td>{{data.tPontos}}</td>
+    </tr>
+  </tbody>
+</table>
+
   </ion-card-content>
 </ion-content>
