@@ -1,1 +1,6 @@
-{}
+{
+    "appId": "br.com.calcprev",
+    "appName": "calcprev",
+    "webDir": "www",
+    "bundledWebRuntime": false
+}

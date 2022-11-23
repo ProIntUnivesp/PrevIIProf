@@ -31,6 +31,11 @@ export class CalcprevprofspPage implements OnInit {
   public tIdade;
   public tPontos;
   public fContrib;
+  public sContrib;
+  public sIdade;
+  public sPontos;
+  public aIdade;
+  public aContrib;
 
 
 
@@ -77,6 +82,11 @@ export class CalcprevprofspPage implements OnInit {
         'tIdade': this.tIdade,
         'tPontos': this.tPontos,
         'fContrib': this.fContrib,
+        'sContrib': this.sContrib,
+        'sIdade': this.sIdade,
+        'sPontos': this.sPontos, 
+        'aIdade': this.aIdade,
+        'aContrib': this.aContrib,
 
       }
     };
@@ -136,6 +146,9 @@ export class CalcprevprofspPage implements OnInit {
 
         this.pontosResMas = +((pontosMasc - this.pontos).toFixed(2));
         this.pM = this.pontosResMas
+        if (this.pontos > 0) {
+          this.sPontos = "Não atende a pontuação mínima";
+        }
 
 
         console.log('Faltam', this.pontosResMas, 'pontos para se aposentar!');
@@ -151,7 +164,10 @@ export class CalcprevprofspPage implements OnInit {
         console.log('Você já cumpriu o tempo de contribuição!');
       } else {
         this.converter(contribResMas);
-        this.fContrib = this.anos+" ano(s) e "+this.meses+' mês(es)';
+        this.fContrib = "Faltam" +" "+this.anos + " ano(s) e " + this.meses + ' mês(es)';
+        if (contribResMas > 0) {
+          this.sContrib = "Não atende ao requisito de tempo de contribuição";
+        }
         console.log(
           'Faltam ',
           this.anos,
@@ -166,6 +182,9 @@ export class CalcprevprofspPage implements OnInit {
         console.log('Você já tem idade para se aposentar!');
       } else {
         this.converter(idadeResMas);
+        if (idadeResMas > 0) {
+          this.sIdade = "Não atende ao requisito de idade mínima";
+        }
         console.log(
           'Faltam ',
           this.anos,
@@ -195,6 +214,9 @@ export class CalcprevprofspPage implements OnInit {
 
         this.pontosResFem = +((pontosFem - this.pontos).toFixed(2));
         this.pF = this.pontosResFem
+        if (this.pontos > 0) {
+          this.sPontos = "Não atende a pontuação mínima";
+        }
 
         console.log('Faltam', this.pontosResFem, 'pontos para se aposentar!');
       }
@@ -206,11 +228,16 @@ export class CalcprevprofspPage implements OnInit {
 
       if (contribResFem <= 0) {
         this.tComp = 'Você já cumpriu o tempo de contribuição!';
+        this.aContrib = 'Não Consta Pendência';
         console.log('Você já cumpriu o tempo de contribuição!');
-       
+        
+
       } else {
         this.converter(contribResFem);
-        this.fContrib = this.anos+" ano(s) e "+this.meses+' mês(es)'  ;
+        this.fContrib = "Faltam "+ +this.anos + " ano(s) e " + this.meses + ' mês(es)';
+        if (contribResFem > 0) {
+          this.sContrib = "Não atende ao requisito de tempo de contribuição";
+        }
         console.log(
           'Faltam ',
           this.anos,
@@ -225,6 +252,9 @@ export class CalcprevprofspPage implements OnInit {
         console.log('Você já tem idade para se aposentar!');
       } else {
         this.converter(this.idadeResFem);
+        if (this.idadeResFem > 0) {
+          this.sIdade = "Não atende ao requisito de idade mínima";
+        }
         console.log(
           'Faltam ',
           this.anos,
@@ -246,6 +276,12 @@ export class CalcprevprofspPage implements OnInit {
 
       }
 
+      if (this.ingresso <= this.aniversario) {
+        alert('A data de ingresso é menor que a data de nascimento, verifique os dados para continuar.!');
+        return false;
+
+      }
+
       this.resultado();
     }
     // Fim Sexo Feminino.
@@ -253,7 +289,7 @@ export class CalcprevprofspPage implements OnInit {
     // definição de variavel
 
 
-   }
+  }
 
   // Função que converte dias corridos em Anos, Meses e Dias:
 
@@ -265,5 +301,5 @@ export class CalcprevprofspPage implements OnInit {
     return this.anos, this.meses, this.dias;
   }
 
-  
+
 }

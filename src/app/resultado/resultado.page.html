@@ -9,14 +9,14 @@
 
 <ion-content>
   <ion-card-content>
-
-    <h1>RESUMO DE CALCULO</h1>
-
+    <br>
+    <h1>Resumo de Cálculo</h1>
+    <br>
     <table>
 
       <thead>
           <tr>
-              <th colspan="2" scope="col">INFORMAÇÕES GERAIS</th> 
+              <th bgcolor="#e67f8f" colspan="2" scope="col">INFORMAÇÕES GERAIS</th> 
           </tr>
       </thead>
       <tbody>
@@ -28,10 +28,10 @@
               <th scope="row">Idade</th>
               <td>{{data.dIdade}}</td>
           </tr>
-          <tr>
+          <!--<tr>
             <th scope="row">Tempo de Contribuição</th>
             <td>{{data.tempo}}</td>
-        </tr>
+        </tr>-->
       </tbody>
   </table>
 <br>
@@ -40,7 +40,7 @@
       
   <thead>
       <tr>
-          <th colspan="2" scope="col">TEMPO DE CONTRIBUIÇÃO ATUAL</th> 
+          <th bgcolor="#e67f8f" colspan="2" scope="col">TEMPO DE CONTRIBUIÇÃO ATUAL</th> 
       </tr>
   </thead>
   <tbody>
@@ -48,10 +48,10 @@
           <th scope="row">Servidor</th>
           <td>{{data.tContrib}}</td>
       </tr>
-      <tr>
+      <!--<tr>
           <th scope="row">CLT</th>
           <td>{{data.dIdade}}</td>
-      </tr>
+      </tr>-->
   </tbody>
 </table>
 <br>
@@ -60,7 +60,7 @@
       
   <thead>
       <tr>
-          <th colspan="2" scope="col">PENDÊNCIAS PARA APOSENTADORIA</th> 
+          <th bgcolor="#e67f8f" colspan="2" scope="col">PENDÊNCIAS PARA APOSENTADORIA</th> 
       </tr>
   </thead>
   <tbody>
@@ -70,7 +70,7 @@
       </tr>
       <tr>
           <th scope="row">Contribuição</th>
-          <td>{{data.fContrib}}</td>
+          <td>{{data.fContrib}}{{data.aContrib}}</td>
       </tr>
   </tbody>
 </table>
@@ -80,7 +80,7 @@
       
   <thead>
       <tr>
-          <th colspan="2" scope="col">PONTUAÇÃO</th> 
+          <th bgcolor="#e67f8f" colspan="2" scope="col">PONTUAÇÃO</th> 
       </tr>
   </thead>
   <tbody>
@@ -98,21 +98,22 @@
 <table>
   <thead>
       <tr>
-          <th colspan="2" scope="col">STATUS DA APOSENTADORIA</th> 
+          <th bgcolor="#e67f8f" colspan="2" scope="col">STATUS DA APOSENTADORIA</th> 
       </tr>
   </thead>
   <tbody>
       <tr>
           <th scope="row">Contribuição</th>
-          <td>{{data.tComp}}</td>
+          <td>{{data.tComp}}{{data.sContrib}}</td>
       </tr>
       <tr>
           <th scope="row">Idade</th>
-          <td>{{data.tIdade}}</td>
+          <td>{{data.tIdade}} {{data.sIdade}}</td>
+          
       </tr>
       <tr>
         <th scope="row" style="width: 30%;">Pontuação</th>
-        <td>{{data.tPontos}}</td>
+        <td>{{data.tPontos}} {{data.sPontos}}</td>
     </tr>
   </tbody>
 </table>
