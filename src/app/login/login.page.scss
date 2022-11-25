@@ -3,7 +3,7 @@
     left: 0;
     right: 0;
     width: 85%;
-    margin: 0 auto;
+    margin: 20px;
     z-index: 2;
 
     &.top {
@@ -20,11 +20,12 @@
         color: #fff;
         text-align: justify;
         //font-weight: bold;
-        font-size: 13px;
+        font-size: 15px;
         left: 0;
         right: 0;
         width: 90%;
         margin: 0 auto;
+        
       }
     }
 
@@ -40,6 +41,7 @@
       color: white;
       background: linear-gradient(red, black);
       border-radius: 10px;
+    
 
       ion-item {
         --background: rgba(255, 255, 255, 0.2);
@@ -53,12 +55,12 @@
   }
 
   .homestart {
-      position: absolute;
+      position: fixed;
       left: 0;
       right: 0;
       bottom: 0;
       height: 45%;
-      background: linear-gradient(black, red);
+      background: linear-gradient(red,black);
 
       .logo {
         position: absolute;
@@ -66,6 +68,9 @@
         left: 0px;
         right: 0px;
         height: 100px;
+        margin-top: 150px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        
         //background-image: url('/assets/img/univesp.png');
         background-size: contain;
         transition: all 0.5s;
