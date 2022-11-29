@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
 
+
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 
@@ -17,6 +18,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     IonicModule,
     HomePageRoutingModule,
     IonicStorageModule.forRoot(),
+
   ],
   declarations: [HomePage]
 })

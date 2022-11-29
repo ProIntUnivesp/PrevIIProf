@@ -1,3 +1,18 @@
+<ion-footer>
+  <ion-text>
+    <h4 style="text-align: center;">
+      <ion-button (click)="zooming(-1)" shape="round" color="light">
+        <ion-icon size="small"  name="remove"></ion-icon>
+      </ion-button>
+        ZOOM
+      <ion-button (click)="zooming(+1)" shape="round" color="light">
+        <ion-icon size="small" name="add"></ion-icon>
+      </ion-button>
+    </h4>
+  </ion-text>
+</ion-footer>
+
+
 <ion-content class="ion-padding">
 <ion-slides>
   <ion-slide>
@@ -27,7 +42,7 @@
   <div class='logo'> 
 
   <div class="container bottom ion-text-center">
-    <span>Esse aplicativo foi desenvolvido como Projeto Integrador III da turma de Engenharia Computação e
+    <span><font size={{globals.fontSize}}>Esse aplicativo foi desenvolvido como Projeto Integrador III da turma de Engenharia Computação e
       Ciência de Dados de 2020. Esse aplicativo calcula de modo aproximado o tempo restante de trabalho de professores do estado
       de São Paulo.
       <br>
@@ -36,7 +51,7 @@
       IMPORTANTE!!
       <br>
       <br>
-      Novos usuários devem inserir um email válido e uma senha, após informar selecione o botão CADASTRE-SE!!</span>
+      Novos usuários devem inserir um email válido e uma senha, após informar selecione o botão CADASTRE-SE!!</font></span>
           
   </div>
 </div>

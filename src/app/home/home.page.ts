@@ -5,6 +5,8 @@ import { AuthenticationService } from '../services/authentication.service';
 import { AvatarService } from '../services/avatar.service';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Storage } from '@ionic/storage-angular';
+import { GlobalVarsService } from '../globals';
+
 
 
 @Component({
@@ -12,8 +14,8 @@ import { Storage } from '@ionic/storage-angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
-    profile = null;
+export class HomePage implements OnInit {
+  profile = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,16 +25,26 @@ export class HomePage implements OnInit{
     private loadingController: LoadingController,
     private alertController: AlertController,
     private storage: Storage,
-  ) {}
+    public globals: GlobalVarsService,
+
+  ) { }
 
   ngOnInit() {
     this.getUserData();
   }
 
-  async getUserData(){
+
+
+  zooming(value) {
+    console.log(value);
+     (value > 0) ?  this.globals.fontSize++ : this.globals.fontSize--;
+     console.log(this.globals.fontSize);
+  }
+
+  async getUserData() {
     await this.storage.create();
-   const dataUser =  await this.storage.get('user');
-   this.profile = JSON.parse(dataUser).user;
+    const dataUser = await this.storage.get('user');
+    this.profile = JSON.parse(dataUser).user;
     console.log(this.profile);
   }
 

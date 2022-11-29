@@ -12,26 +12,38 @@
     
 <ion-content>
   <ion-card-content>
-    <p class="inicio">Para iniciar, é necessário preencher todos os campos:</p>
+    <p class="inicio"><font size={{globals.fontSize}}>Para iniciar, é necessário preencher todos os campos:</font></p>
 
     <br>
     <br>
     <br>
-    
+    <ion-footer>
+      <ion-text>
+        <h4 style="text-align: center;">
+          <ion-button (click)="zooming(-1)" shape="round" color="light">
+            <ion-icon size="small"  name="remove"></ion-icon>
+          </ion-button>
+            ZOOM
+          <ion-button (click)="zooming(+1)" shape="round" color="light">
+            <ion-icon size="small" name="add"></ion-icon>
+          </ion-button>
+        </h4>
+      </ion-text>
+    </ion-footer>
 
     <ion-list>
       <ion-radio-group name="sexo" (ionChange)="changeGenre($event)">
         <ion-list-header>
-          <ion-label>Sexo</ion-label>
+          <ion-label><font size={{globals.fontSize}}>Sexo</font></ion-label>
         </ion-list-header>
 
         <ion-item class="fontes-geral">
-          <ion-label>Feminino</ion-label>
+          <ion-label><font size={{globals.fontSize}}>Feminino</font></ion-label>
           <ion-radio slot="start" value="feminino"></ion-radio>
         </ion-item>
 
         <ion-item class="fontes-geral">
-          <ion-label>Masculino</ion-label>
+          <ion-label><font size={{globals.fontSize}}>Masculino</font></ion-label>
           <ion-radio slot="start" value="masculino"></ion-radio>
         </ion-item>
 
@@ -39,7 +51,7 @@
     </ion-list>
 
     <ion-item class="fontes">
-      <ion-label>Data de Nascimento</ion-label>
+      <ion-label><font size={{globals.fontSize}}>Data de Nascimento</font></ion-label>
     </ion-item>
 
     <ion-item class="fontes">
@@ -53,7 +65,7 @@
     </ion-modal>
 
     <ion-item>
-      <ion-label class="fontes">Data de Ingresso no Estado</ion-label>
+      <ion-label class="fontes"><font size={{globals.fontSize}}>Data de Ingresso no Estado</font></ion-label>
     </ion-item>
 
     <ion-item>
@@ -62,7 +74,7 @@
 
     <ion-modal [keepContentsMounted]="true">
       <ng-template>
-        <ion-datetime name="ingresso" presentation="date" id="simon" (ionChange)="entryDate($event)" [showDefaultButtons]="true"></ion-datetime>
+        <ion-datetime name="ingresso" presentation="date" id="simon" (ionChange)="entryDate($event)" [showDefaultButtons]="true"><font size={{globals.fontSize}}></font></ion-datetime>
       </ng-template>
     </ion-modal>
 

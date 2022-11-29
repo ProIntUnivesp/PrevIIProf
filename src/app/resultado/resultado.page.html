@@ -7,26 +7,42 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-footer>
+    <ion-text>
+      <h4 style="text-align: center;">
+        <ion-button (click)="zooming(-1)" shape="round" color="light">
+          <ion-icon size="small"  name="remove"></ion-icon>
+        </ion-button>
+          ZOOM
+        <ion-button (click)="zooming(+1)" shape="round" color="light">
+          <ion-icon size="small" name="add"></ion-icon>
+        </ion-button>
+      </h4>
+    </ion-text>
+  </ion-footer>
+
 <ion-content class="ion-card-content">
+  
   <ion-card-content>
+    
     <br>
-    <h1>Resumo de Cálculo</h1>
+    <h1><font size={{globals.fontSize}}>Resumo de Cálculo</font></h1>
     <br>
     <table>
 
       <thead>
           <tr>
-              <th bgcolor="#d3d3d3" colspan="2" scope="col">INFORMAÇÕES GERAIS</th> 
+              <th bgcolor="#d3d3d3" colspan="2" scope="col"><font size={{globals.fontSize}}>INFORMAÇÕES GERAIS</font></th> 
           </tr>
       </thead>
       <tbody>
           <tr>
-              <th scope="row">Sexo</th>
-              <td>{{data.sexo}}</td>
+              <th scope="row"><font size={{globals.fontSize}}>Sexo</font></th>
+              <td><font size={{globals.fontSize}}>{{data.sexo}}</font></td>
           </tr>
           <tr>
-              <th scope="row">Idade</th>
-              <td>{{data.dIdade}}</td>
+              <th scope="row"><font size={{globals.fontSize}}>Idade</font></th>
+              <td><font size={{globals.fontSize}}>{{data.dIdade}}</font></td>
           </tr>
           <!--<tr>
             <th scope="row">Tempo de Contribuição</th>
@@ -40,13 +56,13 @@
       
   <thead>
       <tr>
-          <th bgcolor="#d3d3d3" colspan="2" scope="col">TEMPO DE CONTRIBUIÇÃO ATUAL</th> 
+          <th bgcolor="#d3d3d3" colspan="2" scope="col"><font size={{globals.fontSize}}>TEMPO DE CONTRIBUIÇÃO ATUAL</font></th> 
       </tr>
   </thead>
   <tbody>
       <tr>
-          <th scope="row">Servidor</th>
-          <td>{{data.tContrib}}</td>
+          <th scope="row"><font size={{globals.fontSize}}>Servidor</font></th>
+          <td><font size={{globals.fontSize}}>{{data.tContrib}}</font></td>
       </tr>
       <!--<tr>
           <th scope="row">CLT</th>
@@ -60,17 +76,17 @@
       
   <thead>
       <tr>
-          <th bgcolor="#d3d3d3" colspan="2" scope="col">PENDÊNCIAS PARA APOSENTADORIA</th> 
+          <th bgcolor="#d3d3d3" colspan="2" scope="col"><font size={{globals.fontSize}}>PENDÊNCIAS PARA APOSENTADORIA</font></th> 
       </tr>
   </thead>
   <tbody>
       <tr>
-          <th scope="row">Idade</th>
-          <td>{{data.idade}} ano(s), {{data.meses}} mês(es)</td>
+          <th scope="row"><font size={{globals.fontSize}}>Idade</font></th>
+          <td><font size={{globals.fontSize}}>{{data.idade}} ano(s), {{data.meses}} mês(es)</font></td>
       </tr>
       <tr>
-          <th scope="row">Contribuição</th>
-          <td>{{data.fContrib}}{{data.aContrib}}</td>
+          <th scope="row"><font size={{globals.fontSize}}>Contribuição</font></th>
+          <td><font size={{globals.fontSize}}>{{data.fContrib}}{{data.aContrib}}</font></td>
       </tr>
   </tbody>
 </table>
@@ -80,17 +96,17 @@
       
   <thead>
       <tr>
-          <th bgcolor="#d3d3d3" colspan="2" scope="col">PONTUAÇÃO</th> 
+          <th bgcolor="#d3d3d3" colspan="2" scope="col"><font size={{globals.fontSize}}>PONTUAÇÃO</font></th> 
       </tr>
   </thead>
   <tbody>
       <tr>
-          <th scope="row">Pontuação Atual</th>
-          <td>{{data.pontos}}</td>
+          <th scope="row"><font size={{globals.fontSize}}>Pontuação Atual</font></th>
+          <td><font size={{globals.fontSize}}>{{data.pontos}}</font></td>
       </tr>
       <tr>
-          <th scope="row">Pontuação Faltante</th>
-          <td>{{data.pRestante}}</td>
+          <th scope="row"><font size={{globals.fontSize}}>Pontuação Faltante</font></th>
+          <td><font size={{globals.fontSize}}>{{data.pRestante}}</font></td>
       </tr>
   </tbody>
 </table>
@@ -98,25 +114,27 @@
 <table>
   <thead>
       <tr>
-          <th bgcolor="#d3d3d3" colspan="2" scope="col">STATUS DA APOSENTADORIA</th> 
+          <th bgcolor="#d3d3d3" colspan="2" scope="col"><font size={{globals.fontSize}}>STATUS DA APOSENTADORIA</font></th> 
       </tr>
   </thead>
   <tbody>
       <tr>
-          <th scope="row">Contribuição</th>
-          <td>{{data.tComp}}{{data.sContrib}}</td>
+          <th scope="row"><font size={{globals.fontSize}}>Contribuição</font></th>
+          <td><font size={{globals.fontSize}}>{{data.tComp}}{{data.sContrib}}</font></td>
       </tr>
       <tr>
-          <th scope="row">Idade</th>
-          <td>{{data.tIdade}} {{data.sIdade}}</td>
+          <th scope="row"><font size={{globals.fontSize}}>Idade</font></th>
+          <td><font size={{globals.fontSize}}>{{data.tIdade}} {{data.sIdade}}</font></td>
           
       </tr>
       <tr>
-        <th scope="row" style="width: 30%;">Pontuação</th>
-        <td>{{data.tPontos}} {{data.sPontos}}</td>
+        <th scope="row" style="width: 30%;"><font size={{globals.fontSize}}>Pontuação</font></th>
+        <td><font size={{globals.fontSize}}>{{data.tPontos}} {{data.sPontos}}</font></td>
     </tr>
   </tbody>
 </table>
 
+
   </ion-card-content>
+
 </ion-content>

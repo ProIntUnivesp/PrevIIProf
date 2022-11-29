@@ -7,6 +7,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { Storage } from '@ionic/storage-angular';
 import { resolve } from 'dns';
+import { GlobalVarsService } from '../globals';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class LoginPage implements OnInit {
     private router: Router,
     private storage: Storage,
     private navCtrl: NavController,
+    public globals: GlobalVarsService,
   ) {}
 
   get email(){
@@ -42,6 +44,12 @@ export class LoginPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
+  }
+
+  zooming(value) {
+    console.log(value);
+     (value > 0) ?  this.globals.fontSize++ : this.globals.fontSize--;
+     console.log(this.globals.fontSize);
   }
 
   async verifyLogin(){

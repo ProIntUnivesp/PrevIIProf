@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { GlobalVarsService } from '../globals';
 
 @Component({
   selector: 'app-calcprevprofsp',
@@ -39,9 +40,18 @@ export class CalcprevprofspPage implements OnInit {
 
 
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    public globals: GlobalVarsService,
+    ) { }
 
   ngOnInit(): void { }
+
+  zooming(value) {
+    console.log(value);
+     (value > 0) ?  this.globals.fontSize++ : this.globals.fontSize--;
+     console.log(this.globals.fontSize);
+  }
 
   time(e) {
     this.tempoCont = e.target.value;

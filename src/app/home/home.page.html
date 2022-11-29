@@ -8,6 +8,7 @@
     </ion-buttons>
     <ion-title>Calculadora Previdênciaria</ion-title>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -28,20 +29,38 @@
     
   </ion-slides>
 
+  <ion-footer>
+    <ion-text>
+      <h4 style="text-align: center;">
+        <ion-button (click)="zooming(-1)" shape="round" color="light">
+          <ion-icon size="small"  name="remove"></ion-icon>
+        </ion-button>
+          ZOOM
+        <ion-button (click)="zooming(+1)" shape="round" color="light">
+          <ion-icon size="small" name="add"></ion-icon>
+        </ion-button>
+      </h4>
+    </ion-text>
+  </ion-footer>
+
   <ion-card>
     <ion-card-header class="ion-card-subtitle">
       <ion-card-subtitle>MOTIVAÇÃO</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content class="mot-text">
-      Esse é um projeto desenvolvido pelos alunos da faculdade UNIVESP, turma que iniciou no ano de 2020.
+        <ion-card-content class="mot-text" >
+      
+      <font size={{globals.fontSize}}>Esse é um projeto desenvolvido pelos alunos da faculdade UNIVESP, turma que iniciou no ano de 2020. 
+        O tema do Projeto Integrador (PI) neste semestre era Desenvolver um software com framework web ou aplicativo que utilize banco de dados, inclua script web (Javascript), nuvem, acessibilidade, controle de versão, integração contínua e testes.
+        Incluir um dos seguintes requisitos: uso e fornecimento de API, análises de dados e IoT.
+  
+        O grupo optou por desenvolver um aplicativo híbrido para ANDROID E IOS utilizando o framework IONIC e programando com ANGULAR.
+  
+        Esse aplicativo tem o objetivo de calcular o tempo restante para Aposentadoria dos professores do Estado de São Paulo, necessidade que foi levantada após pesquisa que mostrou várias dúvidas após a alteração das regras de aposentadoria para servidores públicos.
+      </font>
+      
 
-      O tema do Projeto Integrador (PI) neste semestre era Desenvolver um software com framework web ou aplicativo que utilize banco de dados, inclua script web (Javascript), nuvem, acessibilidade, controle de versão, integração contínua e testes.
-      Incluir um dos seguintes requisitos: uso e fornecimento de API, análises de dados e IoT.
-
-      O grupo optou por desenvolver um aplicativo híbrido para ANDROID E IOS utilizando o framework IONIC e programando com ANGULAR.
-
-      Esse aplicativo tem o objetivo de calcular o tempo restante para Aposentadoria dos professores do Estado de São Paulo, necessidade que foi levantada após pesquisa que mostrou várias dúvidas após a alteração das regras de aposentadoria para servidores públicos.
+     
     </ion-card-content>
   </ion-card>
 
@@ -50,5 +69,11 @@
   <ion-icon name="calculator"></ion-icon>
 </ion-button>
 
+
+
+
+
 </ion-content>
+
+
 
